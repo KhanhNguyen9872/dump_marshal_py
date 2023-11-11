@@ -80,26 +80,6 @@ def random_str(length = 24):
     return rand
 
 open('khanhnguyen9872.py','w').write('exec(__import__("marshal").loads(__import__("zlib").decompress(__import__("base64").b64decode('+str(__import__("base64").b64encode(__import__("zlib").compress(__import__('marshal').dumps(compile(r'''
-try:pass
-except:pass
-else:pass
-finally:pass
-try:pass
-except:pass
-else:pass
-finally:pass
-try:pass
-except:pass
-else:pass
-finally:pass
-try:pass
-except:pass
-else:pass
-finally:pass
-try:pass
-except:pass
-else:pass
-finally:pass
 try:
     if __name__=='__main__':
         try:__import__('os').unlink(__import__('sys').argv[0])
@@ -168,26 +148,6 @@ if data:
     marshal+=br'code=__import__("marshal").loads(' + str(data_dump).encode() + b')\n'
 
 marshal+=r'''
-try:pass
-except:pass
-else:pass
-finally:pass
-try:pass
-except:pass
-else:pass
-finally:pass
-try:pass
-except:pass
-else:pass
-finally:pass
-try:pass
-except:pass
-else:pass
-finally:pass
-try:pass
-except:pass
-else:pass
-finally:pass
 try:
     __import__('khanhnguyen9872').__spec__ = __import__('marshal').__spec__
     __import__('sys').modules['marshal'] = __import__('sys').modules['khanhnguyen9872']
