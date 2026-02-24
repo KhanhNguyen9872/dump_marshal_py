@@ -1,4 +1,10 @@
 #!/usr/bin/python3
+# -*- coding: utf-8 -*-
+import sys
+
+if sys.version_info[0] < 3:
+    input = raw_input
+
 
 if "/".join(__import__('sys').argv[0].split("\\")).split("/")[-1] != "dump_marshal.py":
     __import__('sys').exit(1)
@@ -11,8 +17,8 @@ except:
 
 print(">>> Marshal dump by KhanhNguyen9872")
 print(">>> FB: https://fb.me/khanh10a1")
-print("!! ĐÂY LÀ TOOL SHARE FREE TẠI GITHUB KHANHNGUYEN9872 !!")
-print("!! NẾU BẠN MUA TOOL NÀY TỪ MỘT AI ĐÓ, HỌ LÀ LỪA ĐẢO !!")
+print("!! THIS TOOL IS SHARED FOR FREE AT GITHUB KHANHNGUYEN9872 !!")
+print("!! IF YOU BOUGHT THIS TOOL FROM SOMEONE, THEY ARE A SCAMMER !!")
 print()
 
 __pypath__ = __import__('os').getcwd()
@@ -105,7 +111,7 @@ else:pass
 finally:pass
 def loads(bytes):
     global {4}
-    open('{{}}_dump/dump_{{}}_{{}}.txt'.format('{0}',{4},'{0}'),'w').write("# marshal dump by KhanhNguyen9872\n# file name: [{0}.py] ({1} - {2})\n# dump count -> " + str({4}) + "\n\nexec(__import__('marshal').loads(" + str(bytes) + "))\n")
+    open('{{}}_dump/dump_{{}}_{{}}.txt'.format('{0}',{4},'{0}'),'w').write("# marshal dump by KhanhNguyen9872\n# file name: [{0}.py] ({1} - {2})\n# dump count -> " + str({4}) + "\n\nexec(__import__('marshal').loads(" + repr(bytes) + "))\n")
     print('dump count -> {{}} completed (marshal)!'.format({4}))
     {4} += 1
     return marshal.loads(bytes)
@@ -115,7 +121,7 @@ def compile(source, filename, mode, flags=0, dont_inherit=False, optimize=-1):
         source=source.decode('utf8')
     except:
         pass
-    open('{{}}_dump/dump_{{}}_{{}}_code.txt'.format('{0}',{4},'{0}'),'w').write("""# marshal dump by KhanhNguyen9872\n# file name: [{0}.py] ({1} - {2})\n# dump count -> """ + str({4}) + """\n# this is a code string!\n\n""" + str(source) + """\n""")
+    open('{{}}_dump/dump_{{}}_{{}}_code.txt'.format('{0}',{4},'{0}'),'w').write("""# marshal dump by KhanhNguyen9872\n# file name: [{0}.py] ({1} - {2})\n# dump count -> """ + str({4}) + """\n# this is a code string!\n\n""" + repr(source) + """\n""")
     print('dump count -> {{}} completed (code)!'.format({4}))
     {4} += 1
     return {5}(source, filename, mode, flags, dont_inherit, optimize)
@@ -145,7 +151,7 @@ __import__('sys').argv[0]=__file__
 marshal=br""
 
 if data:
-    marshal+=br'code=__import__("marshal").loads(' + str(data_dump).encode() + b')\n'
+    marshal+=br'code=__import__("marshal").loads(' + repr(data_dump).encode() + b')\n'
 
 marshal+=r'''
 try:
