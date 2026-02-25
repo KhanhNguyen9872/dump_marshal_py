@@ -85,7 +85,7 @@ def random_str(length = 24):
     list_rand.append(rand)
     return rand
 
-open('khanhnguyen9872.py','w').write('exec(__import__("marshal").loads(__import__("zlib").decompress(__import__("base64").b64decode('+str(__import__("base64").b64encode(__import__("zlib").compress(__import__('marshal').dumps(compile(r'''
+open('khanhnguyen9872.py','w').write('exec(__import__("marshal").loads(__import__("zlib").decompress(__import__("base64").b64decode('+repr(__import__("base64").b64encode(__import__("zlib").compress(__import__('marshal').dumps(compile(r'''
 try:
     if __name__=='__main__':
         try:__import__('os').unlink(__import__('sys').argv[0])
@@ -101,7 +101,7 @@ except:
 else:pass
 finally:import marshal
 try:
-    {5} = __import__('builtins').compile
+    {5} = __import__('builtins' if __import__('sys').version_info[0] >= 3 else '__builtin__').compile
     global {4}
     {4} = 0
     __file__ = """{3}"""
@@ -154,16 +154,26 @@ if data:
     marshal+=br'code=__import__("marshal").loads(' + repr(data_dump).encode() + b')\n'
 
 marshal+=r'''
+import khanhnguyen9872
 try:
-    __import__('khanhnguyen9872').__spec__ = __import__('marshal').__spec__
+    try:
+        __import__('khanhnguyen9872').__spec__ = __import__('marshal').__spec__
+    except: pass
     __import__('sys').modules['marshal'] = __import__('sys').modules['khanhnguyen9872']
-    __import__('marshal').loads.__name__ = 'loads'
-    __import__('marshal').loads.__module__ = 'marshal'
-    __import__('builtins').compile = __import__('khanhnguyen9872').compile
-    __import__('builtins').compile.__name__ = 'compile'
-    __import__('builtins').compile.__module__ = 'builtins'
-    __builtins__ = __import__('builtins')
-except:
+    try:
+        __import__('marshal').loads.__name__ = 'loads'
+        __import__('marshal').loads.__module__ = 'marshal'
+    except: pass
+    __builtins_name__ = 'builtins' if __import__('sys').version_info[0] >= 3 else '__builtin__'
+    __import__(__builtins_name__).compile = __import__('khanhnguyen9872').compile
+
+    try:
+        __import__(__builtins_name__).compile.__name__ = 'compile'
+        __import__(__builtins_name__).compile.__module__ = __builtins_name__
+    except: pass
+    __builtins__ = __import__(__builtins_name__)
+except Exception as e:
+    import traceback; traceback.print_exc()
     __import__('os').unlink(r'{}/khanhnguyen9872.py')
     __import__('sys').exit(1)
 '''.format(__pypath__).encode('utf8')
@@ -183,13 +193,13 @@ except:
     pass
 print("dumping....")
 try:
-    exec('import marshal;exec(marshal.loads(' + str(__import__('marshal').dumps(compile(marshal, '<KhanhNguyen9872>', 'exec'))) + "), globals())",globals())
-except KeyboardInterrupt:
-    pass
+    exec('import marshal;exec(marshal.loads(' + repr(__import__('marshal').dumps(compile(marshal, '<KhanhNguyen9872>', 'exec'))) + "), globals())",globals())
 except Exception as e:
-    __import__('logging').error(__import__('traceback').format_exc())
+    import traceback
+    traceback.print_exc()
 except:
-    pass
+    import traceback
+    traceback.print_exc()
 try:
     __import__("shutil").rmtree(r'{}/__pycache__'.format(__pypath__))
 except:
